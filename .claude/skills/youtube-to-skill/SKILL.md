@@ -15,6 +15,46 @@ It contains the critical understanding of what makes skills actually work vs use
 
 ---
 
+## ⏰ CRITICAL: Check Current Date
+
+**LLMs are trained on historical data and often assume outdated dates.**
+
+Before verifying ANY technology:
+1. Check today's date from your environment/system
+2. Use this date when searching for "current" documentation
+3. Compare video publish date against TODAY's date (not your training cutoff)
+
+Example: If today is December 2025 and a video was published in January 2024, that's ~2 years old — significant API changes may have occurred.
+
+**When searching, always include the current year:**
+- ✅ `"React hooks 2025"` or `"FastAPI latest version December 2025"`
+- ❌ `"React hooks"` (may return outdated results)
+
+---
+
+## 🔬 CRITICAL: No Hallucinated Data
+
+**Never include numbers, estimates, or claims you haven't verified.**
+
+This applies to:
+- Version numbers → Always look them up
+- Performance claims → Only include if from official docs/benchmarks
+- Cost estimates → Only if you've calculated from real pricing
+- Time estimates → Don't guess, omit if unknown
+- Statistics → Must have a verifiable source
+
+**The scientific method:**
+1. If you don't know → Look it up or omit it
+2. If you can't verify → Don't include it
+3. If it's an estimate → Label it clearly with your methodology
+4. If the video claims something → Verify before including
+
+**Bad:** "This approach is 10x faster" (unverified claim from video)
+**Good:** "The video claims improved performance" or omit entirely
+**Best:** Verify with benchmarks and cite source
+
+---
+
 ## The Pipeline
 
 ```
@@ -82,8 +122,10 @@ Example:
 ### For Tools/Services/APIs → Use WebSearch
 
 ```
-WebSearch: "<tool name> documentation 2025" or "<api> breaking changes"
+WebSearch: "<tool name> documentation <current year>" or "<api> latest version <current month year>"
 ```
+
+**Always include the current date in searches to avoid stale results.**
 
 ### When You Find Outdated Information
 
