@@ -1,6 +1,6 @@
 # YouTube to Skill
 
-**Transform YouTube tutorials into Claude Code skills that actually work.**
+**Transform YouTube tutorials into AI agent skills that actually work.**
 
 ## The Problem
 
@@ -8,7 +8,7 @@
 
 YouTube contains millions of programming tutorials, but this knowledge is:
 
-1. **Inaccessible to AI assistants** — Claude cannot watch videos
+1. **Inaccessible to AI assistants** — AI agents cannot watch videos
 2. **Time-consuming to extract** — A 10-minute video takes 10 minutes to watch
 3. **Often outdated** — APIs change, libraries deprecate, best practices evolve
 4. **Not actionable** — Narrative format ("so what we're gonna do...") ≠ executable instructions
@@ -94,33 +94,6 @@ description: Action verb + what + when to use (max 1024 chars)
 ---
 ```
 
-## Validation
-
-### Test Case: GreatScott! LoRa Tutorial
-
-**Input**: https://www.youtube.com/watch?v=nC0o99nN2D0
-- 10:49 duration
-- Published: 2024-11-30
-- Topic: Meshtastic/LoRa with ESP32
-
-**Output**: `/home/yfe/.claude/skills/lora-esp32/SKILL.md`
-- 322 lines
-- Complete Arduino code (transmitter + receiver)
-- HomeAssistant MQTT integration
-- Troubleshooting for 4 common errors
-- Verified against RadioLib v7.4.0 documentation
-
-**Quality indicators observed**:
-
-| Criterion | Status | Evidence |
-|-----------|--------|----------|
-| Trigger words in description | ✓ | "LoRa", "off-grid", "Meshtastic", "RadioLib" |
-| No narrator voice | ✓ | Zero instances of "so basically", "gonna" |
-| Executable code | ✓ | Complete, copy-paste Arduino sketches |
-| Safety warnings preserved | ✓ | "CRITICAL: Never power on without antenna" |
-| Multiple approaches documented | ✓ | Meshtastic (easy) vs RadioLib (advanced) table |
-| Outdated content updated | ✓ | RadioLib API updated to v7.4.0 |
-
 ## File Structure
 
 ```
@@ -131,7 +104,7 @@ description: Action verb + what + when to use (max 1024 chars)
 │                            # - Quality checklist
 │
 ├── reference.md             # Deep knowledge (289 lines)
-│                            # - How Claude discovers skills
+│                            # - How agents discover skills
 │                            # - Transformation patterns
 │                            # - Common mistakes
 │
