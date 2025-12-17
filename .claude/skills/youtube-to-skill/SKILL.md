@@ -182,18 +182,117 @@ See [reference.md](./reference.md) for the deep understanding, but the core prin
 
 ---
 
-## Step 5: Generate the Skill
+## Step 5: Choose Skill Structure
+
+**First, decide: Single file or multi-file?**
+
+```
+┌─────────────────────────────────────┐
+│         Analyze Content             │
+└──────────────────┬──────────────────┘
+                   │
+         ┌─────────┴─────────┐
+         ▼                   ▼
+   Short/Simple?        Complex/Long?
+         │                   │
+         ▼                   ▼
+   Single SKILL.md    Multi-file structure:
+                      ├── Theory → references/
+                      ├── Code → scripts/
+                      └── Variants → examples/
+```
+
+### Decision Criteria
+
+| Criterion | Single File | Multi-File |
+|-----------|-------------|------------|
+| Video length | < 10 min | > 20 min |
+| Code examples | 1-2 small snippets | Complete runnable scripts |
+| Theory vs practice | Mostly practical | Heavy theory + practice |
+| Estimated word count | < 2000 words | > 3000 words |
+| Multiple workflows | No | Yes (different use cases) |
+
+### Multi-File Structure (Progressive Disclosure)
+
+```
+skill-name/
+├── SKILL.md              # Core instructions (<5k words, always loaded)
+├── references/           # Deep docs (loaded on-demand, saves tokens)
+│   ├── concepts.md       # Theory, explanations
+│   └── api.md            # API documentation
+├── scripts/              # Executable code (can run without loading)
+│   └── example.py        # Complete runnable examples
+└── assets/               # Templates, images (used in output)
+```
+
+**Why this matters:**
+- **SKILL.md** is always loaded (~tokens cost)
+- **references/** only loaded when Claude needs them (saves tokens)
+- **scripts/** can be executed directly without loading into context
+- **assets/** copied to output, never loaded
+
+---
+
+## Step 6: Generate the Skill
 
 Use template: [templates/skill_template.md](./templates/skill_template.md)
+
+### Output Format
+
+**For SINGLE FILE output:**
+Start directly with the YAML frontmatter:
+```
+---
+name: skill-name
+description: ...
+---
+# Content...
+```
+
+**For MULTI-FILE output:**
+Use file markers to separate content:
+```
+<!-- FILE: SKILL.md -->
+---
+name: skill-name
+description: ...
+---
+# Skill Title
+Core actionable instructions here (keep under 5000 words).
+For detailed concepts, see [concepts reference](references/concepts.md).
+
+<!-- FILE: references/concepts.md -->
+# Theoretical Concepts
+Deep explanations, formulas, theory...
+
+<!-- FILE: scripts/example.py -->
+#!/usr/bin/env python3
+Complete runnable code...
+```
 
 ### Pre-delivery Checklist
 
 - [ ] **Description has trigger words** users actually say
+- [ ] **Description includes "Use when..."** — This is how the agent discovers the skill
 - [ ] **One skill = one capability** (split if video covers multiple)
 - [ ] **Instructions are executable** (commands, code, steps)
 - [ ] **No narrator voice** ("so", "basically", "gonna")
 - [ ] **Sources documented** (video URL + docs used)
 - [ ] **Versions specified** for all tools/libraries
+- [ ] **Required sections present:** Source, Prerequisites, Instructions, Troubleshooting
+
+### YAML Frontmatter Rules
+
+**ONLY these fields are allowed:**
+```yaml
+---
+name: lowercase-with-hyphens
+description: ACTION VERB + what it does. Use when user needs X, wants to Y, or asks about Z.
+---
+```
+
+- `name`: lowercase, hyphens only, max 40 chars
+- `description`: Must include "Use when..." trigger phrase
 
 ### Ask for Placement
 
