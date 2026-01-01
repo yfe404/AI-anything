@@ -1,0 +1,3 @@
+[submodule ".claude/skills/youtube-to-skill"]
+	path = .claude/skills/youtube-to-skill
+	url = https://github.com/yfe404/youtube-to-skill
