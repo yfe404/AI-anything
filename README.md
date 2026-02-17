@@ -97,7 +97,7 @@ description: Action verb + what + when to use (max 1024 chars)
 ## File Structure
 
 ```
-.claude/skills/youtube-to-skill/
+./youtube-to-skill/
 ├── SKILL.md                 # Main skill (174 lines)
 │                            # - Workflow overview
 │                            # - Tool integration (Context7, WebSearch)
@@ -126,19 +126,11 @@ description: Action verb + what + when to use (max 1024 chars)
 ### Option A: Project Skill
 
 ```bash
-# Clone to your project
-cp -r .claude/skills/youtube-to-skill /path/to/your/project/.claude/skills/
+npx skills add yfe404/AI-anything
 ```
 
-Available only in that project.
-
-### Option B: Personal Skill (Recommended)
-
-```bash
-# Symlink to personal skills
-ln -sf /path/to/youtube-to-skill ~/.claude/skills/youtube-to-skill
-
 # Install dependencies
+```
 pip install youtube-transcript-api yt-dlp
 ```
 
