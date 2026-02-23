@@ -97,7 +97,7 @@ description: Action verb + what + when to use (max 1024 chars)
 ## File Structure
 
 ```
-./youtube-to-skill/
+youtube-to-skill/           # github.com/yfe404/youtube-to-skill
 ├── SKILL.md                 # Main skill (174 lines)
 │                            # - Workflow overview
 │                            # - Tool integration (Context7, WebSearch)
@@ -123,18 +123,15 @@ description: Action verb + what + when to use (max 1024 chars)
 
 ## Installation
 
-### Option A: Project Skill
-
 ```bash
-npx skills add yfe404/AI-anything
-```
+# Install the skill
+npx skills add yfe404/youtube-to-skill
 
 # Install dependencies
-```
 pip install youtube-transcript-api yt-dlp
 ```
 
-Available in all projects. Restart your AI agent to load.
+Restart your AI agent to load.
 
 ## Usage
 
